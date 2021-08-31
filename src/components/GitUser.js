@@ -1,17 +1,29 @@
 import React from 'react'
+import { Button } from 'react-bootstrap'
+import Card from 'react-bootstrap/Card'
+import GitFollowers from './GitFollowers'
+
 
 class GitUser extends React.Component {
     render() {
+        // console.log('GitUser test', this.props.followers)
         return (
             <>
-                <img 
-                    width={200}
-                    src={this.props.user.avatar_url} 
-                    alt={this.props.user.avatar_url} 
-                    key={Math.random()} 
-                />
-                <p>Name: {this.props.user.name}</p>
-                <p>Username: {this.props.user.login}</p>
+            <Card style={{ width: '18rem' }}>
+             <Card.Img variant="top" src={this.props.user.avatar_url} alt={this.props.user.avatar_url}/>
+                <Card.Body>
+                    <Card.Title>{this.props.user.name}</Card.Title>
+                    <Card.Text>
+                    <p>Username: {this.props.user.login}</p>
+                    </Card.Text>
+                    <Button variant="primary">Go to thier GitHub</Button>
+                </Card.Body>
+            </Card>
+                    {
+                        this.props.followers.map(follows => (
+                            <GitFollowers key={Math.random()} follows={follows}/>
+                        ))
+                    }
             </>
         )
     }

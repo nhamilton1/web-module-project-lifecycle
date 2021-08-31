@@ -1,11 +1,13 @@
 import GitUser from './components/GitUser';
 import axios from 'axios';
 import React from 'react';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Card from 'react-bootstrap/Card'
 
 class App extends React.Component {
   state = {
     gitUserData: [],
+    gitFollowers: [],
     username: ''
   }
 
@@ -22,14 +24,22 @@ class App extends React.Component {
       })
   }
 
+
+
   handleSubmit = (e) => {
     e.preventDefault()
     axios.get(`https://api.github.com/users/${this.state.username}`)
       .then(res => {
-        console.log(res.data)
         this.setState({
           ...this.state,
           gitUserData: res.data
+        })
+      })
+      axios.get(`https://api.github.com/users/${this.state.username}/followers`)
+      .then(res => {
+        this.setState({
+          ...this.state,
+          gitFollowers: res.data
         })
       })
   }
@@ -50,10 +60,8 @@ class App extends React.Component {
           <button>Search Git User</button>
           <div id='gitUser'>
             {
-              (this.state.gitUserData.length < 1) ? <div>Loading...</div> : <GitUser user={this.state.gitUserData} />
+              (this.state.gitUserData.length < 1) ? <div>Loading...</div> : <GitUser user={this.state.gitUserData} followers={this.state.gitFollowers}/>
             }     
-          </div>
-          <div id='gitUserFollowers'>
           </div>
         </form>
       </div>
