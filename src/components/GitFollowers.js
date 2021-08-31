@@ -5,8 +5,16 @@ class GitFollowers extends React.Component {
     render(){
         return(
             <>
-            <Card key={Math.random()} className='followers' style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={this.props.follows.avatar_url} alt={this.props.follows.avatar_url} />
+            <Card 
+                key={Math.random()} 
+                className='followers' 
+                style={{width: '400px', display: 'flex', flexDirection: 'row'}}>
+                <Card.Img 
+                    variant="top" 
+                    src={this.props.follows.avatar_url} 
+                    alt={this.props.follows.avatar_url} 
+                    style={{width: '200px'}}
+                />
                 <Card.Body>
                     <Card.Title>{this.props.follows.login}</Card.Title>
                     <Card.Text>     

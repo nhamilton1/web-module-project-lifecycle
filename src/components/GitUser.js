@@ -19,6 +19,7 @@ class GitUser extends React.Component {
                     <Button variant="primary" href={this.props.user.html_url} target='_blank'>Go to thier GitHub</Button>
                 </Card.Body>
             </Card>
+            List of Followers:
                     {
                         this.props.followers.map(follows => (
                             <GitFollowers key={Math.random()} follows={follows}/>

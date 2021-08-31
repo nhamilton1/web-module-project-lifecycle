@@ -2,7 +2,8 @@ import GitUser from './components/GitUser';
 import axios from 'axios';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Card from 'react-bootstrap/Card'
+import { Container } from 'react-bootstrap';
+import './index.css';
 
 class App extends React.Component {
   state = {
@@ -53,7 +54,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{alignContent: 'center'}}>
         <h1>Git User Search</h1>
         <form onSubmit={this.handleSubmit}>
           <input value={this.state.username} onChange={this.handleChange}/>
