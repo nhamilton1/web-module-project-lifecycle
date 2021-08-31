@@ -1,18 +1,20 @@
 import React from 'react'
+import { Button, Card } from 'react-bootstrap'
 
 class GitFollowers extends React.Component {
     render(){
         return(
-            <div key={Math.random()} className='followers'>
-                <img 
-                    width={200}
-                    src={this.props.follows.avatar_url} 
-                    alt={this.props.follows.avatar_url} 
-                    key={Math.random()} 
-                />
-                    <p>Username: {this.props.follows.username}</p>
-                    <p>Name: {this.props.follows.name}</p>               
-            </div>
+            <>
+            <Card key={Math.random()} className='followers' style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={this.props.follows.avatar_url} alt={this.props.follows.avatar_url} />
+                <Card.Body>
+                    <Card.Title>{this.props.follows.login}</Card.Title>
+                    <Card.Text>     
+                    </Card.Text>
+                    <Button variant="primary" href={this.props.follows.html_url} target='_blank' >Go to Thier GitHub</Button>
+                </Card.Body> 
+            </Card>
+            </>
         )
     }
 }
